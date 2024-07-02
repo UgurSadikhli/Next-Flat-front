@@ -1,0 +1,150 @@
+.full {
+  padding: 0.5em 2em 0 2em;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5em;
+}
+
+.heder {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+@keyframes bounce {
+  0%,
+  20%,
+  50%,
+  80%,
+  100% {
+    transform: translateY(0);
+  }
+  40% {
+    transform: translateY(-10px);
+  }
+  60% {
+    transform: translateY(-5px);
+  }
+}
+
+.animated_image {
+  animation: bounce 2s ease-in-out;
+  max-width: 11em;
+  height: auto;
+}
+
+.bottomHR {
+  border: none;
+  height: 1.5px;
+  background-color: gray;
+}
+
+.body {
+  display: flex;
+  flex-direction: row;
+  gap: 2em;
+}
+
+.bodyLeft {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  gap: 0.5em;
+}
+.bodyLeftTop {
+  border: 1px solid #ccc;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+.bodyLeftBody {
+  border: 1px solid #ccc;
+  height: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: center;
+  padding: 20px;
+  overflow-x: auto;
+}
+
+
+.bodyLeftTopBtn {
+  height: 100%;
+  cursor: pointer;
+  background-color: transparent;
+  border: 1px solid #ccc;
+  font-family: "Poppins", sans-serif;
+  padding: 0.3em;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  font-size: medium;
+  gap: 0.5em;
+  color: black;
+}
+
+.bodyLeftTopBtnF {
+  height: 100%;
+  cursor: pointer;
+  background-color: transparent;
+  border: 1px solid #ccc;
+  font-family: "Poppins", sans-serif;
+  padding: 0.3em;
+  width: 100%;
+  display: none;
+  color: black;
+}
+
+.bodyLeftTopBtnico {
+  height: 1.2em;
+  width: 1.2em;
+}
+.bodyLeftTopBtnicoM {
+  height: 1.1em;
+  width: 1.1em;
+}
+@media (max-width: 768px) {
+  .body {
+    display: flex;
+    flex-direction: column;
+    gap: 2em;
+  }
+  .bodyLeftTopBtnF {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 0.2em;
+    font-size: medium;
+    color: black;
+  }
+  .bodyLeftTopBtnico {
+    height: 1em;
+    width: 1em;
+  }
+  .bodyLeftTopBtnicoM {
+    height: 0.8em;
+    width: 0.8em;
+  }
+  .bodyLeftTopBtn {
+    gap: 0.2em;
+  }
+}
+
+@media (max-width:410px) {
+.bodyLeftTopBtnicoM{
+  display: none;
+}
+.bodyLeftTopBtnico{
+  display: none;
+}
+.bodyLeftTopBtnico{
+  display: none;
+}
+}

@@ -1,0 +1,50 @@
+.categoryButton {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-width: 6em;
+    min-height: 6em;
+    justify-content: center;
+    border: 1px solid #ddd;
+    background-color: #F0F0F0;
+    border-radius: 8px;
+    padding: 10px;
+    margin: 5px;
+    cursor: pointer;
+    transition: transform 0.2s ease-in-out;
+}
+
+.categoryButton:hover {
+    transform: scale(1.05);
+}
+
+.image {
+    width: 100px;
+    height: 55px;
+    object-fit: contain;
+}
+
+p {
+    margin-top: 10px;
+    font-size: 14px;
+    text-align: center;
+    font-family: "Poppins", sans-serif;
+    font-weight: 300;
+
+}
+
+@media (max-width: 768px) {
+    .categoryButton {
+        padding: 8px;
+        margin: 3px;
+    }
+
+    .image {
+        width: 40px;
+        height: 40px;
+    }
+
+    p {
+        font-size: 13px;
+    }
+}

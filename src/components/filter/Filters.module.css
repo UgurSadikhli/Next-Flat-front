@@ -1,0 +1,109 @@
+/* Filters.module.css */
+.filters {
+    border: 1px solid #ccc;
+    padding: 10px;
+    width: 100% !important;
+    max-width: 300px!important;
+    transition: max-height 0.3s ease-out, opacity 0.3s ease-out;
+}
+
+.visible {
+    display: block;
+}
+
+.filterCategory {
+    margin-bottom: 20px;
+    justify-content: start;
+    align-items: start;
+    text-align: left;
+}
+
+.filterCategory h3 {
+    margin-bottom: 10px;
+}
+
+label {
+    display: block;
+    font-family: "Poppins", sans-serif;
+}
+
+.clearButton {
+    display: block;
+  font-size: small;
+    background-color: #bf1010;
+    color: white;
+    border: none;
+    cursor: pointer;
+    width: 100%;
+    font-family: "Poppins", sans-serif;
+}
+
+.applyButton {
+    display: block;
+    font-size: small;
+    padding: 10px;
+    background-color: #0520ee;
+    color: white;
+    border: none;
+    cursor: pointer;
+    width: 100%;
+    font-family: "Poppins", sans-serif;
+}
+
+.ButtonDiv {
+    display: flex;
+    flex-direction: row;
+    gap: 0.5em;
+}
+
+.clearButton:hover {
+    background-color: #bf1010d8;
+}
+
+.applyButton:hover {
+    background-color: #0520eecb;
+}
+
+.toggleButton {
+    display: none; 
+    padding: 10px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    cursor: pointer;
+    width: 100% !important;
+    margin-top: 10px;
+    font-family: "Poppins", sans-serif;
+    font-size: medium;
+}
+
+.toggleButton:hover {
+    background-color: #0056b3;
+}
+
+.mobileOnly {
+    display: none;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .toggleButton {
+        display: block;
+    }
+
+    .filters {
+        display: none; 
+    }
+
+    .filters.visible {
+        display: block;
+    
+    }
+    .mainDiv{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+    
+    }
+}
