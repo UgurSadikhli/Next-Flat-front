@@ -21,7 +21,9 @@ const Search = () => {
     setIsVisible(!isVisible);
   };
 
-
+  const homereturn =()=>{
+    navigate("/")
+  }
   useEffect(() => {
     i18n.changeLanguage(lang);
   }, [i18n, lang]);
@@ -41,6 +43,7 @@ const Search = () => {
               src={hederImg}
               alt="Next Flat"
               className={styles.animated_image}
+              onClick={homereturn}
             />
           </div>
           <hr className={styles.bottomHR} />

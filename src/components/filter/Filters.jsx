@@ -192,7 +192,7 @@ const Filters = ({ isVisible, toggleVisibility, filteritem }) => {
           <button className={styles.clearButton} onClick={clearFilters}>
             {t("Clear Filters")}
           </button>
-          <button className={styles.applyButton}>Apply</button>
+          <button className={styles.applyButton}>{t("Apply")}</button>
         </div>
       </div>
     </div>
