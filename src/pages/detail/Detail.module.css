@@ -214,7 +214,29 @@
 
 
 
-
+@media (max-width:1645px){
+  .userDetailName{
+    font-family: "Poppins", sans-serif;
+    font-size: small!important;
+    font-weight: 450;
+  }
+  
+  .cityInfo{
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    align-items: start;
+    width: 100%;
+  
+  }
+  
+  .userDetailCity{
+    font-family: "Poppins", sans-serif;
+    font-size: smaller!important;
+    color: rgb(121, 118, 118);
+  
+  }
+}
 
 @media (max-width: 1050px) {
   .body {
@@ -260,7 +282,7 @@
   }
 
   .descripText {
-    width: 50%; 
+    width: 55%; 
     max-height: 6em;
     overflow-y: auto;
   }
@@ -272,6 +294,8 @@
   .appartmentprice {
     font-size: 3em; 
   }
+
+
 }
 
 @media (max-width: 600px) {
