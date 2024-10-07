@@ -62,7 +62,7 @@ const Main = () => {
   let content;
   if (propertiesStatus === "loading") {
     content = <div>Loading...</div>;
-  } else if (propertiesStatus === "succeeded") {
+  } else if (propertiesStatus === "succsesfull") {   //make succsesful after test
     content = Array.isArray(properties) ? (
       properties.map((property, index) => (
         <Card

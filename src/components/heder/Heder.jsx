@@ -26,6 +26,9 @@ const Heder = ({ scrollToBottom }) => {
   const loginNav = () => {
     navigate("/search");
   };
+  const detail = () => {
+    navigate("/detail/2");
+  };
   const handleClickRent =() => {
     navigate("/search");
     localStorage.setItem("filter","rental");
@@ -38,7 +41,7 @@ const Heder = ({ scrollToBottom }) => {
           <div className={`${styles.right} ${menuOpen ? styles.showMenu : ''}`}>
             <span onClick={handleClickRent}>{t("Rent Apartment")}</span>
             <span onClick={loginNav}>{t("Search")}</span>
-            <span>{t("Filter")}</span>
+            <span onClick={detail}>{t("Filter")}</span>
             <span onClick={scrollToBottom}>{t("Apartments")}</span>
             <span>{t("Cart")}</span>
           </div>
