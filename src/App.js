@@ -10,8 +10,7 @@ import Main from "../src/pages/main/Main";
 import Search from './pages/search/Search';
 import Map from './pages/map/MapPage';
 import Detail from './pages/detail/Detail';
-import 'bootstrap/dist/css/bootstrap.min.css';
-import 'bootstrap/dist/js/bootstrap.bundle.min.js';
+
 
 
 function App() {

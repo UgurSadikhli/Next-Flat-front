@@ -1,13 +1,15 @@
 import React, { useState, useEffect } from "react";
 import styles from "./Heder.module.css";
 import userIco from "../../icons/userIco.png";
-import cartIco from "../../icons/cartIco.png";
+import envelopeIco from "../../icons/envelope.png";
 import magnifierIco from "../../icons/magnifierIco.png";
 import logoIco from "../../icons/logoIco.png";
-import menuIco from "../../icons/menu.png";
+
 import { useTranslation } from "react-i18next";
 import LanguageButton from "../button/languageToggle/languageButton";
 import hederImg from "../../img/hederIco.jpg";
+import AccauntMenu from "../../components/userSetting/userSetting";
+import DropDown from "../../components/DropDownMenu/DropDownMenu";
 import { useNavigate } from "react-router-dom";
 
 const Heder = ({ scrollToBottom }) => {
@@ -45,16 +47,18 @@ const Heder = ({ scrollToBottom }) => {
             <span onClick={scrollToBottom}>{t("Apartments")}</span>
             <span>{t("Cart")}</span>
           </div>
-          <div className={styles.left}>
-            <button className={styles.menuButton} onClick={toggleMenu}>
-              <img src={menuIco} className={styles.menuButtonimg} alt="Menu" />
-            </button>
-            <div className={`${styles.dropdownIcons} ${menuOpen ? styles.showIcons : ''}`}>
-             <LanguageButton />
-              <img src={magnifierIco} className={styles.menuButtonimg1} onClick={loginNav} alt="Search" />
-              <img src={cartIco} className={styles.menuButtonimg1} alt="Cart" />
-              <img src={userIco} className={styles.menuButtonimg1} alt="User" />
+          <div className={styles.left}>    
+            <div className={styles.dropdownIcons}>
+              <LanguageButton/>
+              <img src={envelopeIco} className={styles.menuButtonimg1} alt="Cart" />
+              <AccauntMenu/>
             </div>
+            <div className={styles.DropDownMenue}>
+              <DropDown/>
+            </div>
+
+
+
           </div>
         </div>
         <hr className={styles.bottomHR} />

@@ -1,9 +1,4 @@
-.buttonTog{
+a{
   font-family: "Poppins", sans-serif;
-  background-color: transparent;
-  border: 0.1em solid;
-  border-radius: 1rem;
   cursor: pointer;
-  
 }
-

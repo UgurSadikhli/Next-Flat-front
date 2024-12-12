@@ -9,6 +9,7 @@
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
+  height: 1.5em;
 }
 
 .left {
@@ -16,19 +17,21 @@
   flex-direction: row;
   align-items: center;
   justify-content: center;
-  gap: 0.5em;
 }
+
+
 
 .bottomHR {
   border: none;
   height: 1px;
-  background-color: gray;
+  background-color: rgb(0, 0, 0);
 }
 
 .right {
   display: flex;
   flex-direction: row;
   gap: 1rem;
+  margin-top: 0.4em;
 }
 
 .menuButton {
@@ -51,9 +54,6 @@
 }
 .menuButtonimg1 {
  cursor: pointer;
- 
- 
-
 }
 
 .dropdownIcons {
@@ -61,10 +61,18 @@
   flex-direction: row;
   align-items: center;
   justify-content: center;
-  gap: 5px;
+  margin-top: 0.5em;
+}
+.DropDownMenue{
+  display:none;
+
 }
 
+
 @media (max-width: 600px) {
+  .DropDownMenue{
+    display: flex;
+  }
   .top {
     flex-direction: row;
     align-items: flex-start;
@@ -131,6 +139,9 @@
 }
 
 @media (max-width: 768px) {
+  .DropDownMenue{
+    display: flex;
+  }
   .top {
     flex-direction: row;
     align-items: flex-start;
@@ -196,6 +207,9 @@
 
 
 @media (max-width: 1000px) {
+  .DropDownMenue{
+    display: flex;
+  }
   .top {
     flex-direction: row;
     align-items: flex-start;
@@ -264,7 +278,7 @@
     transform: translateY(0);
   }
   40% {
-    transform: translateY(-10px);
+    transform: translateY(-6px);
   }
   60% {
     transform: translateY(-5px);
@@ -272,8 +286,8 @@
 }
 
 .animated_image {
-  animation: bounce 2s ease-in-out;
-  max-width: 11em;
+  animation: bounce 1s ease-in-out;
+  max-width: 10em;
   height: auto;
 }
 
