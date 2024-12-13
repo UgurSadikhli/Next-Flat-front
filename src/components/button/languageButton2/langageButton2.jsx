@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from "react";
-
 import IconButton from '@mui/material/IconButton';
 import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
 import MoreVertIcon from '@mui/icons-material/MoreVert';
+import styles from './languageButton2.module.css'
+
 
 const options = [
   'Azərbaycan',
@@ -24,7 +25,7 @@ export default function LanguageButton2() {
     setAnchorEl(event.currentTarget);
   };
   const handleClose = (key) => {
-    const newLanguage = key === "Azərbaycan" ? "Az" : key === "Russian" ? "Ru" : "Eng";   
+    const newLanguage = key === "Azərbaycan" ? "Az" : key === "Russian" ? "Ru" : key === "English" ? "Eng" : language;   
     localStorage.setItem("language", newLanguage);
    setLanguage(newLanguage);
    window.location.reload(); 
@@ -47,6 +48,8 @@ export default function LanguageButton2() {
         id="long-menu"
         MenuListProps={{
           'aria-labelledby': 'long-button',
+            'font-family': 'Poppins, sans-serif',
+
         }}
         anchorEl={anchorEl}
         open={open}
@@ -61,7 +64,7 @@ export default function LanguageButton2() {
         }}
       >
         {options.map((option) => (
-          <MenuItem key={option} selected={option === 'Pyxis'} onClick={()=>handleClose(option.toString())}>
+          <MenuItem key={option} selected={option === 'Pyxis'} onClick={()=>handleClose(option.toString())} >
             {option}
           </MenuItem>
         ))}

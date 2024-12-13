@@ -1,4 +1,19 @@
 .menuButtonimg1{
-    height: 1em;
-    width: 1em;
+    height: 2em;
+    width: 2em;
+}
+.GroupBox{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+.GroupBox1{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+p{
+  font-family: "Poppins", sans-serif;
+
 }

@@ -4,6 +4,7 @@ import userIco from "../../icons/userIco.png";
 import envelopeIco from "../../icons/envelope.png";
 import magnifierIco from "../../icons/magnifierIco.png";
 import logoIco from "../../icons/logoIco.png";
+import Badge from '@mui/material/Badge';
 
 import { useTranslation } from "react-i18next";
 import LanguageButton from "../button/languageToggle/languageButton";
@@ -11,6 +12,7 @@ import hederImg from "../../img/hederIco.jpg";
 import AccauntMenu from "../../components/userSetting/userSetting";
 import DropDown from "../../components/DropDownMenu/DropDownMenu";
 import { useNavigate } from "react-router-dom";
+import LanguageButton2 from "../button/languageButton2/langageButton2";
 
 const Heder = ({ scrollToBottom }) => {
   const lang = localStorage.getItem("language");
@@ -49,12 +51,22 @@ const Heder = ({ scrollToBottom }) => {
           </div>
           <div className={styles.left}>    
             <div className={styles.dropdownIcons}>
-              <LanguageButton/>
-              <img src={envelopeIco} className={styles.menuButtonimg1} alt="Cart" />
+              <LanguageButton2/>
+              <Badge badgeContent={2} color="primary"   sx={{
+    '& .MuiBadge-badge': {
+      fontSize: '0.7rem',
+      height: '16px', 
+      minWidth: '16px', 
+      padding: '0',
+    },
+  }}>
+                  <img src={envelopeIco} className={styles.menuButtonimg1} alt="Nottiifications" />
+              </Badge>
+              
               <AccauntMenu/>
             </div>
             <div className={styles.DropDownMenue}>
-              <DropDown/>
+              <DropDown scrollToBottomm={scrollToBottom}/>
             </div>
 
 
