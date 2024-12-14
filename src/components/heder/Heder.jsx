@@ -3,9 +3,7 @@ import styles from "./Heder.module.css";
 import userIco from "../../icons/userIco.png";
 import envelopeIco from "../../icons/envelope.png";
 import magnifierIco from "../../icons/magnifierIco.png";
-import logoIco from "../../icons/logoIco.png";
 import Badge from '@mui/material/Badge';
-
 import { useTranslation } from "react-i18next";
 import LanguageButton from "../button/languageToggle/languageButton";
 import hederImg from "../../img/hederIco.jpg";

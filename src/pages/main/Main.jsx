@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import styles from "./Main.module.css";
 import homeIco from "../../img/RoomSketcherPlans.png";
 import { useTranslation } from "react-i18next";
@@ -13,17 +13,15 @@ import loftImg from "../../img/loft.jpg";
 import duplexImg from "../../img/duplex.jpg";
 import Card from "../../components/card/card";
 import { useNavigate } from "react-router-dom";
-import { useDispatch, useSelector } from "react-redux";
-import { fetchProperties } from "../../features/propertiesSlice";
 
 const Main = () => {
   const lang = localStorage.getItem("language");
   const { t, i18n } = useTranslation();
-  const dispatch = useDispatch();
-  const properties = useSelector((state) => state.properties.properties);
-  const propertiesStatus = useSelector((state) => state.properties.status);
-  const error = useSelector((state) => state.properties.error);
   const navigate = useNavigate();
+
+  const [properties, setProperties] = useState([]);
+  const [propertiesStatus, setPropertiesStatus] = useState("idle");
+  const [error, setError] = useState(null);
 
   const categories = [
     { category: "One", imageSrc: oneImg },
@@ -36,22 +34,33 @@ const Main = () => {
 
   useEffect(() => {
     i18n.changeLanguage(lang);
-    if (propertiesStatus === "idle") {
-      dispatch(fetchProperties());
-    }
-  }, [i18n, lang, propertiesStatus, dispatch]);
+
+    const fetchData = async () => {
+      setPropertiesStatus("loading");
+      try {
+        const response = await fetch("https://api.nextflat.my/apartments");
+        if (!response.ok) {
+          throw new Error("Failed to fetch properties");
+        }
+        const data = await response.json();
+        setProperties(data);
+        setPropertiesStatus("successful");
+      } catch (err) {
+        setError(err.message);
+        setPropertiesStatus("failed");
+      }
+    };
+
+    fetchData();
+  }, [i18n, lang]);
 
   const handleClick = (category) => {
     navigate("/search");
-    localStorage.setItem("filter",category);
+    localStorage.setItem("filter", category);
   };
-
-
-
 
   const handleCardClick = (property) => {
     console.log(`${property.title} clicked`);
-
   };
 
   const bottomRef = useRef(null);
@@ -62,7 +71,7 @@ const Main = () => {
   let content;
   if (propertiesStatus === "loading") {
     content = <div>Loading...</div>;
-  } else if (propertiesStatus === "succsesfull") {   //make succsesful after test
+  } else if (propertiesStatus === "successful") {
     content = Array.isArray(properties) ? (
       properties.map((property, index) => (
         <Card
@@ -80,9 +89,6 @@ const Main = () => {
   } else if (propertiesStatus === "failed") {
     content = <div>{error}</div>;
   }
-  
-
-
 
   return (
     <>
