@@ -12,6 +12,7 @@ import Map from './pages/map/MapPage';
 import Detail from './pages/detail/Detail';
 import Register from './pages/register/RegisterPage';
 import Login from './pages/login/LoginPage';
+import AddAnnouncements from './pages/addAnnouncement/AddAnnouncement'
 
 
 
@@ -23,12 +24,14 @@ function App() {
         <Router>
         <Routes>
           <Route path="/">
+          <Route path="*" element={<Navigate to="/" replace />} />
             <Route  index element={<Main />} />
             <Route  path='search' element={<Search />} />
             <Route  path='map' element={<Map />} />
             <Route path="detail/:id" element={<Detail />} />
             <Route path="register" element={<Register />} />
             <Route path="login" element={<Login />} />
+            <Route path="new-announcement" element={<AddAnnouncements />} />
           </Route>
         </Routes>
       </Router>

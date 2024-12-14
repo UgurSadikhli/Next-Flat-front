@@ -31,7 +31,9 @@ const Login = () => {
       [name]: value,
     }));
   };
-
+  const gotoreg =()=>{
+    navigate("/register")
+  }
   const handleSubmit = async (e) => {
     e.preventDefault();
 
@@ -41,9 +43,9 @@ const Login = () => {
     const { email, password } = formData;
 
     try {
-
-      // "https://api.nextflat.my/login"
-      const response = await fetch("http://localhost:3000/login", {
+      
+      // "http://localhost:3000/login"
+      const response = await fetch("https://api.nextflat.my/login", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -140,11 +142,17 @@ const Login = () => {
                       type="password"
                       value={formData.password}
                       onChange={handleInputChange}
-                    />
+                    /> <div className={styles.GotoLogin} onClick={gotoreg} >
+                    {t("register")}
                   </div>
+                  </div>
+                  
                 </div>
+               
               </div>
+             
             </ThemeProvider>
+            
             
             {errorMessage && <p className={styles.error}>{errorMessage}</p>}
             

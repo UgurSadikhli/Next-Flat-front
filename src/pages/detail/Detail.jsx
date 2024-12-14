@@ -30,16 +30,16 @@ const DetailPage = () => {
   useEffect(() => {
     // Fetch apartment details
     if (id) {
-      {/*https://api.nextflat.my/apartments/${id} */}
-      fetch(`http://localhost:3000/apartments/${id}`)
+      {/*http://localhost:3000/apartments/${id} */}
+      fetch(`https://api.nextflat.my/apartments/${id}`)
         .then((response) => response.json())
         .then((data) => {
           setApartment(data);
           setLoadingApartment(false);
 
-          // https://api.nextflat.my/users/${data.author_id}
+          // http://localhost:3000/users/${data.author_id}
           if (data.author_id) {
-            fetch(`http://localhost:3000/users/${data.author_id}`)
+            fetch(`https://api.nextflat.my/users/${data.author_id}`)
               .then((response) => response.json())
               .then((userData) => {
                 setUser(userData);

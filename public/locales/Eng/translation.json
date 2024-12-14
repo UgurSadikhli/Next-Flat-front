@@ -46,8 +46,13 @@
   "agreeWithTerms":"agreeWithTerms",
   "create":"create",
   "Profile":"Profile",
-  "Nottifications":"Nottifications",
+  "Notifications":"Notifications",
   "Add another account":"Add another account",
   "Settings":"Settings",
-  "Logout":"Logout"
+  "Logout":"Logout",
+  "Login":"Login",
+  "login":"login",
+  "Register":"Register",
+  "register":"register",
+  "My announcements":"My announcements"
 }

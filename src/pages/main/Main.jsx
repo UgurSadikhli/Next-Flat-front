@@ -38,7 +38,7 @@ const Main = () => {
     const fetchData = async () => {
       setPropertiesStatus("loading");
       try {
-        const response = await fetch("http://localhost:3000/apartments"); {/*https://api.nextflat.my/apartments*/}
+        const response = await fetch("https://api.nextflat.my/apartments"); {/*http://localhost:3000/apartments*/}
         if (!response.ok) {
           throw new Error("Failed to fetch properties");
         }

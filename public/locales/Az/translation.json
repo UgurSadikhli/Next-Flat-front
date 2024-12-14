@@ -46,8 +46,13 @@
   "agreeWithTerms": "Şərtlərlə razıyam",
   "create": "Yarat",
   "Profile": "Profil",
-  "Nottifications": "Bildirişlər",
+  "Notifications": "Bildirişlər",
   "Add another account": "Başqa hesab əlavə et",
   "Settings": "Tənzimləmələr",
-  "Logout": "Çıxış"
+  "Logout": "Çıxış",
+  "Login": "Giriş",
+  "login":"giriş",
+  "Register": "Qeydiyyat",
+  "register": "qeydiyyat",
+  "My announcements":"Mənim elanlarım"
 }

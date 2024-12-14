@@ -46,8 +46,14 @@
   "agreeWithTerms": "Согласен с условиями",
   "create": "Создать",
   "Profile": "Профиль",
-  "Nottifications": "Уведомления",
+  "Notifications": "Уведомления",
   "Add another account": "Добавить другой аккаунт",
   "Settings": "Настройки",
-  "Logout": "Выйти"
+  "Logout": "Выйти",
+  "Login": "Вход",
+  "login": "вход",
+  "Register": "Регистрация",
+  "register": "pегистрация",
+  "My announcements":"Мои объявления"
+
 }

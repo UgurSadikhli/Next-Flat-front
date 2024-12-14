@@ -9,7 +9,9 @@ const Card = ({ image, title, author, price, onClick }) => {
         <h3 className={styles.title}>{title}</h3>
         <p className={styles.author}>{author}</p>
         <div className={styles.footer}>
-          <p className={styles.price}>${price.toLocaleString()}</p>
+        <p className={styles.price}>
+  ${(price || 0).toLocaleString()}
+</p>
         </div>
       </div>
     </div>

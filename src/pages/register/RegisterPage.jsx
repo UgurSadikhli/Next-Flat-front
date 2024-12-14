@@ -42,6 +42,9 @@ const Register = () => {
   const handleCheckboxChange = () => {
     setTermsAccepted((prev) => !prev);
   };
+  const gotologin =()=>{
+    navigate("/login")
+  }
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -63,8 +66,8 @@ const Register = () => {
     };
 
     try {
-     // "https://api.nextflat.my/users"
-      const response = await fetch("http://localhost:3000/users", {
+     // "http://localhost:3000/users"
+      const response = await fetch("https://api.nextflat.my/users", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -207,6 +210,9 @@ const Register = () => {
                     <input type="checkbox" onChange={handleCheckboxChange} />
                     {t("agreeWithTerms")}
                   </label>
+                  <div className={styles.GotoLogin} onClick={gotologin} >
+                    {t("login")}
+                  </div>
                 </div>
               </div>
             </ThemeProvider>

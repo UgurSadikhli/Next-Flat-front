@@ -12,3 +12,24 @@
     width: 20px;
 
 }
+
+.loginRegisterButton{
+  padding: 0.2em;
+  border-radius: 25px;
+  border: 1.4px solid black;
+  width: calc(fit-content + 2px);
+  text-align: center;
+  font-family: "Poppins", sans-serif;
+  font-weight: 300;
+  cursor: pointer;
+}
+
+.loginRegisterButton:hover {
+  background-color: rgb(245, 239, 239);
+}
+
+.loginRegBox{
+  display: flex;
+  flex-direction: row;
+  gap: 0.3em;
+}
