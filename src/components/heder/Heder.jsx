@@ -50,16 +50,7 @@ const Heder = ({ scrollToBottom }) => {
           <div className={styles.left}>    
             <div className={styles.dropdownIcons}>
               <LanguageButton2/>
-              <Badge badgeContent={2} color="primary"   sx={{
-    '& .MuiBadge-badge': {
-      fontSize: '0.7rem',
-      height: '16px', 
-      minWidth: '16px', 
-      padding: '0',
-    },
-  }}>
-                  <img src={envelopeIco} className={styles.menuButtonimg1} alt="Nottiifications" />
-              </Badge>
+            
               
               <AccauntMenu/>
             </div>

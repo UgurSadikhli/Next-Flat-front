@@ -38,7 +38,7 @@ const Main = () => {
     const fetchData = async () => {
       setPropertiesStatus("loading");
       try {
-        const response = await fetch("https://api.nextflat.my/apartments");
+        const response = await fetch("http://localhost:3000/apartments"); {/*https://api.nextflat.my/apartments*/}
         if (!response.ok) {
           throw new Error("Failed to fetch properties");
         }
@@ -60,7 +60,9 @@ const Main = () => {
   };
 
   const handleCardClick = (property) => {
-    console.log(`${property.title} clicked`);
+    console.log(`${property.id} clicked`);
+    navigate(`/detail/${property.id}`);
+
   };
 
   const bottomRef = useRef(null);

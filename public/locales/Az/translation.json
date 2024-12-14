@@ -35,5 +35,19 @@
   "Apartment Type": "Mənzil növü",
   "Clear Filters": "Təmizlə",
   "Apply": "Tətbiq et",
-  "Rental": "Kirayə"
+  "Rental": "Kirayə",
+  "Name": "Ad",
+  "Password": "Şifrə",
+  "Country": "Ölkə",
+  "Surname": "Soyad",
+  "Phone number": "Telefon nömrəsi",
+  "Re-Password": "Şifrəni təkrarla",
+  "Age": "Yaş",
+  "agreeWithTerms": "Şərtlərlə razıyam",
+  "create": "Yarat",
+  "Profile": "Profil",
+  "Nottifications": "Bildirişlər",
+  "Add another account": "Başqa hesab əlavə et",
+  "Settings": "Tənzimləmələr",
+  "Logout": "Çıxış"
 }

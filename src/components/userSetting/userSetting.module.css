@@ -1,0 +1,14 @@
+.MessageBox{
+    display: flex;
+    align-items: center;
+    gap: 1em;
+  font-family: "Poppins", sans-serif;
+
+}
+
+.envelopeIco{
+
+    height: 20px;
+    width: 20px;
+
+}

@@ -35,5 +35,19 @@
   "Apartment Type": "Тип квартиры",
   "Clear Filters": "Сбросить",
   "Apply": "Применить",
-  "Rental": "Аренда"
+  "Rental": "Аренда",
+  "Name": "Имя",
+  "Password": "Пароль",
+  "Country": "Страна",
+  "Surname": "Фамилия",
+  "Phone number": "Номер телефона",
+  "Re-Password": "Повторите пароль",
+  "Age": "Возраст",
+  "agreeWithTerms": "Согласен с условиями",
+  "create": "Создать",
+  "Profile": "Профиль",
+  "Nottifications": "Уведомления",
+  "Add another account": "Добавить другой аккаунт",
+  "Settings": "Настройки",
+  "Logout": "Выйти"
 }

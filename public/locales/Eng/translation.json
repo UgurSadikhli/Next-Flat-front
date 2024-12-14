@@ -35,5 +35,19 @@
   "Apartment Type": "Apartment Type",
   "Clear Filters": "Clear Filters",
   "Apply": "Apply",
-  "Rental":"Rental"
+  "Rental":"Rental",
+  "Name":"Name",
+  "Password":"Password",
+  "Country":"Country",
+  "Surname":"Surname",
+  "Phone number":"Phone number",
+  "Re-Password":"Re-Password",
+  "Age":"Age",
+  "agreeWithTerms":"agreeWithTerms",
+  "create":"create",
+  "Profile":"Profile",
+  "Nottifications":"Nottifications",
+  "Add another account":"Add another account",
+  "Settings":"Settings",
+  "Logout":"Logout"
 }
