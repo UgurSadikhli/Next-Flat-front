@@ -82,12 +82,12 @@ export default function LanguageButton2() {
       {loading && (
         <Box
           sx={{
-            position: "absolute",
+            position: "fixed",
             top: 0,
             left: 0,
             right: 0,
             bottom: 0,
-            backdropFilter: "blur(10px)",  
+            backdropFilter: "blur(4px)",  
             zIndex: 1,
           }}
         />
@@ -96,7 +96,7 @@ export default function LanguageButton2() {
       {loading && (
         <Box
           sx={{
-            position: "absolute",
+            position: "fixed",
             top: "50%",
             left: "50%",
             transform: "translate(-50%, -50%)",
