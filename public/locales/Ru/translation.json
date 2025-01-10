@@ -54,6 +54,8 @@
   "login": "вход",
   "Register": "Регистрация",
   "register": "pегистрация",
-  "My announcements":"Мои объявления"
-
+  "My announcements":"Мои объявления",
+  "Select an Avatar": "Выберите аватар",
+  "Close": "Закрыть",
+  "Choose Image": "Выбрать изображение"
 }

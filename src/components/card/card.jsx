@@ -1,7 +1,7 @@
 import React from 'react';
 import styles from './card.module.css';
 
-const Card = ({ image, title, author, price, onClick }) => {
+const Card = ({ image, title, author, price, onClick, currency }) => {
   return (
     <div className={styles.card} onClick={onClick}>
       <img src={image} alt={title} className={styles.image} />
@@ -10,7 +10,7 @@ const Card = ({ image, title, author, price, onClick }) => {
         <p className={styles.author}>{author}</p>
         <div className={styles.footer}>
         <p className={styles.price}>
-  ${(price || 0).toLocaleString()}
+        {currency === "AZN" ? `₼ ${(price || 0).toLocaleString()}` : currency === "USD" ? `$ ${(price || 0).toLocaleString()}` : `${(price || 0).toLocaleString()}`}
 </p>
         </div>
       </div>

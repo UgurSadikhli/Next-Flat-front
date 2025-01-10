@@ -7,7 +7,7 @@ import { useTranslation } from "react-i18next";
 import { useParams } from "react-router-dom";
 import Rating from '@mui/material/Rating';
 import Carousel from '../../components/carousel/Carousel';
-import cartIco from "../../icons/cartIco.png";
+import Avatar from "@mui/material/Avatar";
 
 const DetailPage = () => {
   const { id } = useParams();
@@ -103,11 +103,7 @@ const DetailPage = () => {
         <div className={styles.right}>
           <span className={styles.appartmentName}>{apartment.title}</span>
           <div className={styles.userDetail}>
-            <img
-              className={styles.userDetailIMG}
-              src={user?.profile_image || "default_user_image_url"}
-              alt="User Img"
-            />
+            <Avatar src={user?.profile_image} sx={{ width: 55, height: 55 }} alt={user?.name} />
             <div className={styles.cityInfo}>
               <span className={styles.userDetailName}>
                 {user ? `${user.name} ${user.surname}` : t("Owner Name")}
@@ -142,7 +138,7 @@ const DetailPage = () => {
               {apartment.price || t("N/A")}
             </span>
             <span className={styles.appartmentpricevalute}>
-              {t("AZN")}
+            {apartment.currency || t("AZN")}
             </span>
           </div>
         </div>

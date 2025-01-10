@@ -1,73 +1,74 @@
-import React from "react";
-import styles from "./Carousel.module.css"; // Make sure your styles are correctly imported
-import "bootstrap/dist/css/bootstrap.min.css";
-import "bootstrap/dist/js/bootstrap.bundle.min.js";
+import React, { useState } from "react";
+import styles from "./Carousel.module.css";  // Import CSS module
 
-const Carousel = ({ images = [] }) => {
+const CustomCarousel = ({ images = [] }) => {
+  const [activeIndex, setActiveIndex] = useState(0);
+
+  // Handle next button click
+  const handleNext = () => {
+    setActiveIndex((prevIndex) => (prevIndex + 1) % images.length); // Wraps around to first image
+  };
+
+  // Handle previous button click
+  const handlePrev = () => {
+    setActiveIndex(
+      (prevIndex) => (prevIndex - 1 + images.length) % images.length
+    ); // Wraps around to the last image
+  };
+
   return (
-    <div id="carouselExampleIndicators" className="carousel slide">
-      {/* Dynamic Carousel Indicators */}
-      <div className="carousel-indicators">
+    <div className={styles.carousel}>
+      {/* Carousel inner */}
+      <div
+        className={styles.carouselInner}
+        style={{
+          transform: `translateX(-${activeIndex * 100}%)`,  // Move the container left according to the active image index
+        }}
+      >
+        {images.map((image, index) => (
+          <div
+            key={index}
+            className={styles.carouselItem}
+          >
+            <div className={styles.carouselItemImgContainer}>
+              <img
+                src={image}
+                alt={`Slide ${index + 1}`}
+                className={styles.carouselItemImg}
+              />
+            </div>
+          </div>
+        ))}
+      </div>
+
+      {/* Indicators */}
+      <div className={styles.carouselIndicators}>
         {images.map((_, index) => (
           <button
             key={index}
-            type="button"
-            data-bs-target="#carouselExampleIndicators"
-            data-bs-slide-to={index}
-            className={index === 0 ? "active" : ""}
-            aria-current={index === 0 ? "true" : "false"}
-            aria-label={`Slide ${index + 1}`}
+            onClick={() => setActiveIndex(index)}
+            className={`${styles.carouselIndicatorButton} ${
+              activeIndex === index ? styles.carouselIndicatorButtonActive : ""
+            }`}
           ></button>
         ))}
       </div>
 
-      {/* Dynamic Carousel Images */}
-      <div className="carousel-inner">
-        {images.length > 0 ? (
-          images.map((image, index) => (
-            <div
-              key={index}
-              className={`carousel-item ${index === 0 ? "active" : ""}`}
-            >
-              <img
-                src={image}
-                className="d-block w-100"
-                alt={`Slide ${index + 1}`}
-              />
-            </div>
-          ))
-        ) : (
-          <div className="carousel-item active">
-            <img
-              src="default_image_url" // Replace with a placeholder image URL
-              className="d-block w-100"
-              alt="Default Slide"
-            />
-          </div>
-        )}
-      </div>
-
-      {/* Navigation Buttons */}
+      {/* Navigation buttons */}
       <button
-        className="carousel-control-prev"
-        type="button"
-        data-bs-target="#carouselExampleIndicators"
-        data-bs-slide="prev"
+        className={styles.carouselControlPrev}
+        onClick={handlePrev}
       >
-        <span className="carousel-control-prev-icon" aria-hidden="true"></span>
-        <span className="visually-hidden">Previous</span>
+       <i class="bi bi-caret-left"></i>
       </button>
       <button
-        className="carousel-control-next"
-        type="button"
-        data-bs-target="#carouselExampleIndicators"
-        data-bs-slide="next"
+        className={styles.carouselControlNext}
+        onClick={handleNext}
       >
-        <span className="carousel-control-next-icon" aria-hidden="true"></span>
-        <span className="visually-hidden">Next</span>
+       <i class="bi bi-caret-right"></i>
       </button>
     </div>
   );
 };
 
-export default Carousel;
+export default CustomCarousel;

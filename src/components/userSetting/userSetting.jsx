@@ -46,7 +46,7 @@ export default function AccountMenu() {
   };
 
   const addAnnouncement=()=>{
-    navigate("/new-announcement");
+    navigate("/newAnnouncement");
   }
 
   useEffect(() => {
@@ -69,7 +69,7 @@ export default function AccountMenu() {
             >
               <Avatar
                 src={user?.avatar}
-                sx={{ width: 30, height: 30 }}
+                sx={{ width: 35, height: 35 }}
                 alt={user?.name}
               />
             </IconButton>
@@ -132,7 +132,7 @@ export default function AccountMenu() {
           anchorOrigin={{ horizontal: "right", vertical: "bottom" }}
         >
           <MenuItem onClick={handleClose}>
-            <Avatar src={user?.avatar} sx={{ width: 30, height: 30 }} alt={user?.name} />{" "}
+            <Avatar src={user?.avatar} sx={{ width: 35, height: 35 }} alt={user?.name} />{" "}
             {t("Profile")}
           </MenuItem>
 

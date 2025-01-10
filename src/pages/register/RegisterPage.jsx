@@ -62,7 +62,6 @@ const Register = () => {
 
     const newUser = {
       ...formData,
-      apartment_ids: ["1"], 
     };
 
     try {
@@ -139,7 +138,7 @@ const Register = () => {
             <ThemeProvider theme={theme}>
               <div className={styles.formBodyLeftMain}>
                 <AvatarInput
-                  setProfileImage={(url) => setFormData((prev) => ({ ...prev, profile_image: url }))} // Update profile image state
+                  setProfileImage={(url) => setFormData((prev) => ({ ...prev, profile_image: url }))} 
                 />
                 <div className={styles.formBodyLeft}>
                   <div className={styles.formBodyLeftC1}>

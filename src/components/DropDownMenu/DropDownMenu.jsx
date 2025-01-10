@@ -66,12 +66,12 @@ export default function BasicMenu({scrollToBottomm}) {
         onClose={handleClose}
         MenuListProps={{
           'aria-labelledby': 'basic-button',
-          'font-family': 'Poppins, sans-serif',
+          'fontFamily': 'Poppins, sans-serif',
         }}
       >
         <MenuItem className={styles.GroupBox1}>
           <AccauntMenu />
-          <label>hi, {user.name}</label>
+          {authToken && <label>Hi, {user.name}</label>}
           
         </MenuItem>
           <MenuItem >

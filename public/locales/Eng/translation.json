@@ -54,5 +54,10 @@
   "login":"login",
   "Register":"Register",
   "register":"register",
-  "My announcements":"My announcements"
+  "My announcements":"My announcements",
+  "Select an Avatar":"Select an Avatar",
+  "Close":"Close",
+  "Choose Image":"Choose Image"
+
+
 }

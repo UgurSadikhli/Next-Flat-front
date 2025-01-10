@@ -82,6 +82,7 @@ const Main = () => {
           title={property.title}
           author={property.author}
           price={property.price}
+          currency={property.currency}
           onClick={() => handleCardClick(property)}
         />
       ))
