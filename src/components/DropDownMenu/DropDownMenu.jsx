@@ -8,14 +8,15 @@ import styles from "../DropDownMenu/DropDownMenu.module.css";
 import AccauntMenu from "../../components/userSetting/userSetting";
 import LanguageButton2 from "../button/languageButton2/langageButton2";
 import { useTranslation } from "react-i18next";
-import Badge from '@mui/material/Badge';
+
 import { useNavigate } from "react-router-dom";
 
 export default function BasicMenu({scrollToBottomm}) {
   const lang = localStorage.getItem("language");
   const { t, i18n } = useTranslation();
   const navigate = useNavigate();
-
+  
+  
   useEffect(() => {
     i18n.changeLanguage(lang);
   }, [i18n, lang]);

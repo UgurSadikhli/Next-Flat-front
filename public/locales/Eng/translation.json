@@ -57,7 +57,27 @@
   "My announcements":"My announcements",
   "Select an Avatar":"Select an Avatar",
   "Close":"Close",
-  "Choose Image":"Choose Image"
-
-
+  "Choose Image":"Choose Image",
+  "Add new announcement": "Add new announcement",
+  "Title": "Title",
+  "Price": "Price",
+  "Town": "Town",
+  "Sale": "Sale",
+  "Rooms": "Rooms",
+  "City": "City",
+  "Street": "Street",
+  "Currency": "Currency",
+  "Family": "Family",
+  "Attic": "Attic",
+  "Kv M": "Kv M",
+  "Flour": "Flour",
+  "Description": "Description",
+  "Monthly": "Monthly",
+  "Yearly": "Yearly",
+  "One time": "One time",
+  "All possible": "All possible",
+  "Payment method": "Payment method",
+  "Actions":"Actions",
+  "Delete":"Delete",
+  "Edit":"Edit"
 }

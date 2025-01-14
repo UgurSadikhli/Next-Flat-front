@@ -1,74 +1,53 @@
-import React, { useState } from "react";
-import styles from "./Carousel.module.css";  // Import CSS module
+import React from 'react';
+import { Swiper, SwiperSlide } from 'swiper/react';
+import 'swiper/css';
+import 'swiper/css/pagination';
+import 'swiper/css/navigation';
+import { Pagination, Navigation } from 'swiper/modules';
+import styles from './Carousel.module.css';
 
-const CustomCarousel = ({ images = [] }) => {
-  const [activeIndex, setActiveIndex] = useState(0);
-
-  // Handle next button click
-  const handleNext = () => {
-    setActiveIndex((prevIndex) => (prevIndex + 1) % images.length); // Wraps around to first image
-  };
-
-  // Handle previous button click
-  const handlePrev = () => {
-    setActiveIndex(
-      (prevIndex) => (prevIndex - 1 + images.length) % images.length
-    ); // Wraps around to the last image
-  };
+export default function Carousel({ images }) {
+  if (!images || images.length === 0) return null;
 
   return (
-    <div className={styles.carousel}>
-      {/* Carousel inner */}
-      <div
-        className={styles.carouselInner}
-        style={{
-          transform: `translateX(-${activeIndex * 100}%)`,  // Move the container left according to the active image index
-        }}
-      >
-        {images.map((image, index) => (
-          <div
-            key={index}
-            className={styles.carouselItem}
-          >
-            <div className={styles.carouselItemImgContainer}>
-              <img
-                src={image}
-                alt={`Slide ${index + 1}`}
-                className={styles.carouselItemImg}
-              />
-            </div>
-          </div>
-        ))}
-      </div>
+    <Swiper
+      spaceBetween={30}
+      pagination={{
+        clickable: true,
+        renderBullet: (index, className) => {
+          return (
+            `<span class="${className}" style="background: ${index === 0 ? 'goldenrod' : 'goldenrod'}"></span>`
+          );
+        },
+      }}
+      navigation={{
+        nextEl: '.swiper-button-next',
+        prevEl: '.swiper-button-prev',
+      }}
+      loop={true}
+      modules={[Pagination, Navigation]}
+      className={styles.mySwiper} 
+      style={{
+        borderRadius: '15px', 
+        overflow: 'hidden', 
+      }}
+    >
+      {images.map((image, index) => (
+        <SwiperSlide key={index} style={{ borderRadius: '15px' }}> 
+          <img 
+            src={image} 
+            alt={`Slide ${index + 1}`} 
+            style={{
+              width: '100%',
+              height: 'auto',
+              borderRadius: '15px', 
+            }} 
+          />
+        </SwiperSlide>
+      ))}
 
-      {/* Indicators */}
-      <div className={styles.carouselIndicators}>
-        {images.map((_, index) => (
-          <button
-            key={index}
-            onClick={() => setActiveIndex(index)}
-            className={`${styles.carouselIndicatorButton} ${
-              activeIndex === index ? styles.carouselIndicatorButtonActive : ""
-            }`}
-          ></button>
-        ))}
-      </div>
-
-      {/* Navigation buttons */}
-      <button
-        className={styles.carouselControlPrev}
-        onClick={handlePrev}
-      >
-       <i class="bi bi-caret-left"></i>
-      </button>
-      <button
-        className={styles.carouselControlNext}
-        onClick={handleNext}
-      >
-       <i class="bi bi-caret-right"></i>
-      </button>
-    </div>
+      <div className="swiper-button-prev" style={{ color: 'goldenrod' }}></div>
+      <div className="swiper-button-next" style={{ color: 'goldenrod' }}></div>
+    </Swiper>
   );
-};
-
-export default CustomCarousel;
+}

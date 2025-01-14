@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React, { useState, useEffect } from "react";
 import Table from '@mui/material/Table';
 import TableBody from '@mui/material/TableBody';
 import TableCell from '@mui/material/TableCell';
@@ -7,8 +7,21 @@ import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
 import Button from '@mui/material/Button';
+import { useTranslation } from "react-i18next";
+import { useNavigate } from "react-router-dom";
+import styles from "./Table.module.css"
 
 export default function AccessibleTable({ rows }) {
+
+  const lang = localStorage.getItem("language");
+  const { t, i18n } = useTranslation();
+  const navigate = useNavigate();
+
+
+  useEffect(() => {
+    i18n.changeLanguage(lang); 
+  }, [i18n, lang]);
+  
   const  deleteRow = async(id) => {
       try {
         const response = await fetch(`https://api.nextflat.my/apartments/${id}`, {
@@ -26,8 +39,11 @@ export default function AccessibleTable({ rows }) {
       }
      window.location.reload(); 
     }
-  
 
+  const  editRow = (id) => {
+      navigate(`/edit-announcement/${id}`)
+    }
+  
   return (
     <TableContainer
       component={Paper}
@@ -41,11 +57,11 @@ export default function AccessibleTable({ rows }) {
       <Table aria-label="caption table">
         <TableHead>
           <TableRow>
-            <TableCell>Title</TableCell>
-            <TableCell align="right">Id</TableCell>
-            <TableCell align="right">Price</TableCell>
-            <TableCell align="right">Currency</TableCell>
-            <TableCell align="center">Actions</TableCell> 
+            <TableCell>{t("Title")}</TableCell>
+            <TableCell align="right">{t("Price")}</TableCell>
+            <TableCell align="right">{t("Currency")}</TableCell>
+            <TableCell align="center">{t("Actions")}</TableCell>
+
           </TableRow>
         </TableHead>
         <TableBody>
@@ -54,19 +70,24 @@ export default function AccessibleTable({ rows }) {
               <TableCell component="th" scope="row">
                 {row.Title}
               </TableCell>
-              <TableCell align="right">{row.Id}</TableCell>
               <TableCell align="right">{row.Price}</TableCell>
               <TableCell align="right">{row.Curency}</TableCell>
-              <TableCell align="center">
-            
-                <Button
-                  variant="outlined"
-                  color="error"
-                  onClick={() => deleteRow(row.Id)}
-                >
-                  Delete
-                </Button>
-              </TableCell>
+              <TableCell align="right">
+            <div className={styles.ButtonDiv}>
+                <button
+        className={`${styles.button} ${styles.deleteButton}`}
+        onClick={() => deleteRow(row.Id)}
+      >
+        <i className="bi bi-trash3-fill"></i>
+      </button>
+      <button
+        className={`${styles.button} ${styles.editButton}`}
+        onClick={() => editRow(row.Id)}
+      >
+        <i className="bi bi-pencil-fill"></i>
+      </button>
+      </div>
+      </TableCell>
             </TableRow>
           ))}
         </TableBody>

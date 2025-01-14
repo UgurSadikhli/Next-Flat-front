@@ -8,6 +8,7 @@ import Divider from "@mui/material/Divider";
 import IconButton from "@mui/material/IconButton";
 import Tooltip from "@mui/material/Tooltip";
 import PersonAdd from "@mui/icons-material/PersonAdd";
+import EmailIcon from '@mui/icons-material/Email';
 import Settings from "@mui/icons-material/Settings";
 import Logout from "@mui/icons-material/Logout";
 import envelopeIco from "../../icons/envelope.png";
@@ -149,12 +150,8 @@ export default function AccountMenu() {
                   padding: "0",
                 },
               }}
-            >
-              <img
-                src={envelopeIco}
-                className={styles.envelopeIco}
-                alt="Notifications"
-              />
+            > 
+             <EmailIcon fontSize="small" sx={{ color: 'gray' }} />
             </Badge>
             {t("Notifications")}
           </MenuItem>

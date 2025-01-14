@@ -33,7 +33,6 @@ const AddAnnouncements = () => {
   const [paymentMethod, setPeymentMethod] = useState('Monthly');
   const [typeOfService, setTypeOfService] = useState('Sale');
   const [typeOfHome, setTypeOfHome] = useState('studio');
-  const [kvmAmount, setkvmAmount] = useState('100');
   const [roomNumber, setroomNumber] = useState('1');
   const navigate = useNavigate();
   const lang = localStorage.getItem("language");
@@ -75,9 +74,7 @@ const [user, setUser] = useState(() => {
     setTypeOfHome(event.target.value);
   };
   
-  const handlesetkvmAmount = (event) => {
-    setkvmAmount(event.target.value);
-  };
+
   const handlesetsetroomNumber = (event) => {
     setroomNumber(event.target.value);
   };
@@ -152,6 +149,7 @@ const [user, setUser] = useState(() => {
 
   const [images, setImages] = useState(Array(6).fill(null));
 
+
   const handleImageChange = (index, event) => {
     const file = event.target.files[0];
     if (file) {
@@ -199,6 +197,8 @@ const [user, setUser] = useState(() => {
       };
       reader.readAsDataURL(file);
     }
+
+    
   };
 
 
@@ -209,7 +209,7 @@ const [user, setUser] = useState(() => {
       price: document.getElementById('Price').value || 0,
       author_id: user.id,  
       author: user.name,
-      description: document.getElementById('Description').value,
+      description: document.getElementById('Description').value ||  document.getElementById('Description1').value ,
       longitude: markerPosition[1], 
       latitude: markerPosition[0], 
       images: [images[0], ...images.slice(1).filter(image => image !== null)],  
@@ -219,7 +219,7 @@ const [user, setUser] = useState(() => {
       serviceType:typeOfService.toString(),
       paymentMethod:paymentMethod.toString(),
       roomNumber:roomNumber.toString(),
-      kvmAmount:kvmAmount.toString(),
+      kvmAmount:document.getElementById('Kv_M').value || "",
       typeOfHome:typeOfHome.toString(),
     };
 
@@ -294,7 +294,11 @@ const [user, setUser] = useState(() => {
   }, [user.id]);
   
   
-
+  const handleDelete = (index) => {
+    const updatedImages = [...images];
+    updatedImages[index] = null; 
+    setImages(updatedImages);
+  };
   
   return (
     <div className={styles.mainC}>
@@ -343,12 +347,12 @@ const [user, setUser] = useState(() => {
       color: 'goldenrod',  '&.Mui-focused': {
         color: 'goldenrod',
       },
-    }}>Deal type</InputLabel>
+    }}>{t("Deal type")}</InputLabel>
         <Select
           labelId="demo-simple-select-label"
           id="demo-simple-select"
           value={typeOfService}
-          label="Deal type"
+          label={t("Deal type")}
           onChange={handleserviceTypeChange}
           sx={{
             '&.Mui-focused .MuiOutlinedInput-notchedOutline': {
@@ -359,8 +363,8 @@ const [user, setUser] = useState(() => {
             },
           }}
         >
-          <MenuItem value={"Sale"}>Sale</MenuItem>
-          <MenuItem value={"Rental"}>Rental</MenuItem>
+          <MenuItem value={"Sale"}>{t("Sale")}</MenuItem>
+          <MenuItem value={"Rental"}>{t("Rental")}</MenuItem>
         </Select>
                 </FormControl>
                 <FormControl fullWidth>
@@ -368,12 +372,12 @@ const [user, setUser] = useState(() => {
       color: 'goldenrod',  '&.Mui-focused': {
         color: 'goldenrod',
       },
-    }}>Rooms</InputLabel>
+    }}>{t("Rooms")}</InputLabel>
         <Select
           labelId="demo-simple-select-label"
           id="demo-simple-select"
           value={roomNumber}
-          label="Rooms"
+          label={t("Rooms")}
           onChange={handlesetsetroomNumber}
           sx={{
             '&.Mui-focused .MuiOutlinedInput-notchedOutline': {
@@ -409,12 +413,12 @@ const [user, setUser] = useState(() => {
       color: 'goldenrod',  '&.Mui-focused': {
         color: 'goldenrod',
       },
-    }}>Currency</InputLabel>
+    }}>{t("Currency")}</InputLabel>
         <Select
           labelId="demo-simple-select-label"
           id="demo-simple-select"
           value={currency}
-          label="Currency"
+          label={t("Currency")}
           onChange={handleCurrencyChange}
           sx={{
             '&.Mui-focused .MuiOutlinedInput-notchedOutline': {
@@ -434,12 +438,12 @@ const [user, setUser] = useState(() => {
       color: 'goldenrod',  '&.Mui-focused': {
         color: 'goldenrod',
       },
-    }}>Home type</InputLabel>
+    }}>{t("Home type")}</InputLabel>
         <Select
           labelId="demo-simple-select-label"
           id="demo-simple-select"
           value={typeOfHome}
-          label="Home type"
+          label={t("Home type")}
           onChange={handlesetTypeOfHome}
           sx={{
             '&.Mui-focused .MuiOutlinedInput-notchedOutline': {
@@ -450,21 +454,22 @@ const [user, setUser] = useState(() => {
             },
           }}
         >
-          <MenuItem value={"studio"}>Studio</MenuItem>
-          <MenuItem value={"duplex"}>Duplex</MenuItem>
-          <MenuItem value={"penthouse"}>Penthouse</MenuItem>
-          <MenuItem value={"family"}>Family</MenuItem>
-          <MenuItem value={"loft"}>Loft</MenuItem>
-          <MenuItem value={"attic"}>Attic</MenuItem>
+          <MenuItem value={"studio"}>{t("Studio")}</MenuItem>
+          <MenuItem value={"duplex"}>{t("Duplex")}</MenuItem>
+          <MenuItem value={"penthouse"}>{t("Penthouse")}</MenuItem>
+          <MenuItem value={"family"}>{t("Family")}</MenuItem>
+          <MenuItem value={"loft"}>{t("Loft")}</MenuItem>
+          <MenuItem value={"attic"}>{t("Attic")}</MenuItem>
         </Select>
                 </FormControl>
                 </div>
               </div>
-              <div className={styles.textboxes}>
-                <TextField id="Flat" name="Flat" label={t("Flat")} />     
-              <TextField  id="Flour" name="Flour" label={t("Flour")}  />
-
+              <div className={styles.textboxes1}>
+                <TextField id="Kv_M" name="Kv_M" label={t("Kv M")} />     
+                <TextField  id="Flour" name="Flour" label={t("Flour")}  />
+  
                 
+  
                 <TextField
                   className={styles.DescriptionLabel}
                   id="Description"
@@ -472,17 +477,17 @@ const [user, setUser] = useState(() => {
                   label={t("Description")}
                 />
 
-                <FormControl  fullWidth>
+                <FormControl   className={styles.RentalInfo}  fullWidth>
         <InputLabel id="demo-simple-select-label"   sx={{
       color: 'goldenrod', '&.Mui-focused': {
         color: 'goldenrod',
       },
-    }}>Payment method</InputLabel>
+    }}>{t("Payment method")}</InputLabel>
         <Select
           labelId="demo-simple-select-label"
           id="demo-simple-select"
           value={paymentMethod}
-          label="Payment method"
+          label={t("Payment method")}
           onChange={handlepaymentMethod}
           sx={{
             '&.Mui-focused .MuiOutlinedInput-notchedOutline': {
@@ -493,16 +498,57 @@ const [user, setUser] = useState(() => {
             },
           }}
         >
-          <MenuItem value={"Monthly"}>Monthly</MenuItem>
-          <MenuItem value={"Yearly"}>Yearly</MenuItem>
-          <MenuItem value={"One time"}>One time</MenuItem>
-          <MenuItem value={"All possible"}>All possible</MenuItem>
+          <MenuItem value={"Monthly"}>{t("Monthly")}</MenuItem>
+          <MenuItem value={"Yearly"}>{t("Yearly")}</MenuItem>
+          <MenuItem value={"One time"}>{t("One time")}</MenuItem>
+          <MenuItem value={"All possible"}>{t("All possible")}</MenuItem>
         </Select>
                 </FormControl>
+
+        
                 
               
               </div>
+              <div className={styles.textboxes12}>
+              
+                <TextField
+                  className={styles.DescriptionLabel1}
+                  id="Description1"
+                  name="Description"
+                  label={t("Description")}
+                />
+
+                <FormControl  fullWidth>
+        <InputLabel id="demo-simple-select-label"   sx={{
+      color: 'goldenrod', '&.Mui-focused': {
+        color: 'goldenrod',
+      },
+    }}>{t("Payment method")}</InputLabel>
+        <Select
+          labelId="demo-simple-select-label"
+          id="demo-simple-select"
+          value={paymentMethod}
+          label={t("Payment method")}
+          onChange={handlepaymentMethod}
+          sx={{
+            '&.Mui-focused .MuiOutlinedInput-notchedOutline': {
+              borderColor: 'goldenrod', 
+            },
+            '& .MuiSelect-icon': {
+              color: 'goldenrod',
+            },
+          }}
+        >
+           <MenuItem value={"Monthly"}>{t("Monthly")}</MenuItem>
+          <MenuItem value={"Yearly"}>{t("Yearly")}</MenuItem>
+          <MenuItem value={"One time"}>{t("One time")}</MenuItem>
+          <MenuItem value={"All possible"}>{t("All possible")}</MenuItem>
+        </Select>
+                </FormControl>
+     
+              </div>
             </div>
+            
           </ThemeProvider>
           <hr className={styles.verticalline} />
           <div className={styles.container}>
@@ -512,6 +558,15 @@ const [user, setUser] = useState(() => {
                 className={`${styles.box} ${image ? styles.withImage : ''}`}
                 style={image ? { backgroundImage: `url(${image})` } : {}}
               >
+                 {image && (
+            <button
+              onClick={() => handleDelete(index)}
+              className={styles.deleteButton}
+            >
+              <i class="bi bi-trash3-fill"></i>
+            </button>
+          )}
+
                 {!image && (
                   <label className={styles.label}>
                     <input
@@ -519,6 +574,7 @@ const [user, setUser] = useState(() => {
                       accept="image/*"
                       onChange={(e) => handleImageChange(index, e)}
                       className={styles.input}
+                      key={index}
                     />
                     <span className={styles.plus}>+</span>
                   </label>
@@ -526,6 +582,8 @@ const [user, setUser] = useState(() => {
               </div>
             ))}
           </div>
+
+
           <hr className={styles.verticalline} />
           <div className={styles.mapContainer}>
             <MapContainer

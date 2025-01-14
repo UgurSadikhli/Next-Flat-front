@@ -8,7 +8,6 @@ import { useParams } from "react-router-dom";
 import Rating from '@mui/material/Rating';
 import Carousel from '../../components/carousel/Carousel';
 import Avatar from "@mui/material/Avatar";
-
 const DetailPage = () => {
   const { id } = useParams();
   const [apartment, setApartment] = useState(null);
@@ -18,11 +17,10 @@ const DetailPage = () => {
   const navigate = useNavigate();
   const lang = localStorage.getItem("language");
   const { t, i18n } = useTranslation();
-  const imagesArray = [
-    "https://letsenhance.io/static/8f5e523ee6b2479e26ecc91b9c25261e/1015f/MainAfter.jpg",
-    "https://letsenhance.io/static/8f5e523ee6b2479e26ecc91b9c25261e/1015f/MainAfter.jpg",
-    "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRnnFf6DXcgRxe71BOQm1orHpnKjJloo9c2jg&s",
-  ];
+  const handlePhoneCall = () => {
+    window.location.href = `tel:${user.phone_num}`;
+  };
+
   useEffect(() => {
     i18n.changeLanguage(lang); 
   }, [i18n, lang]);
@@ -57,7 +55,7 @@ const DetailPage = () => {
         });
     }
   }, [id]);
-
+  
   const homereturn = () => {
     navigate("/");
   };
@@ -69,6 +67,8 @@ const DetailPage = () => {
   if (!apartment) {
     return <div>Apartment not found</div>;
   }
+
+
 
   return (
     <div className={styles.mainC}>
@@ -103,7 +103,7 @@ const DetailPage = () => {
         <div className={styles.right}>
           <span className={styles.appartmentName}>{apartment.title}</span>
           <div className={styles.userDetail}>
-            <Avatar src={user?.profile_image} sx={{ width: 55, height: 55 }} alt={user?.name} />
+            <Avatar src={user?.profile_image} sx={{ width: 50, height: 50 }} alt={user?.name} />
             <div className={styles.cityInfo}>
               <span className={styles.userDetailName}>
                 {user ? `${user.name} ${user.surname}` : t("Owner Name")}
@@ -119,18 +119,15 @@ const DetailPage = () => {
               />
             </div>
           </div>
-          <div className={styles.descripText}>
+          <span className={styles.descripText}>
             {apartment.description || t("No Description Available.")}
-          </div>
+          </span>
           <div className={styles.btnGroup}>
-            <button className={styles.btnGroupCall}>
-              <i className="bi bi-telephone"></i> {t("Call")}
+            <button className={styles.btnGroupCall} onClick={handlePhoneCall}>
+              <i className="bi bi-telephone"></i> {user ? user.phone_num : t("Call")}
             </button>
             <button className={styles.btnGroupBasket}>
-              <i className="bi bi-cart-fill"></i>
-            </button>
-            <button className={styles.btnGroupFavorite}>
-              <i className="bi bi-map-fill"></i>
+              <i className="bi bi-heart-fill"></i>
             </button>
           </div>
           <div className={styles.appartmentpriceandvalute}>

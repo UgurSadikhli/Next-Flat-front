@@ -48,7 +48,24 @@
     height: 1.3em;
     width: 1.3em;
   }
+  .deleteButton {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    background: rgba(255, 255, 255, 0.3);
+    border: none;
+    border-radius: 25px;
+    padding: 2px;
+    cursor: pointer;
+    z-index: 10;
+  }
   
+  .deleteButton i {
+    width: 18px;
+    height: 18px;
+    color: #ff4d4d;
+  }
+
   .backbtn {
     font-family: "Poppins", sans-serif;
     font-size: medium;
@@ -63,10 +80,14 @@
     justify-content: center;
     flex-direction: row;
   }
-  
+  .imageWarning{
+    font-size: smaller;
+    font-family: "Poppins", sans-serif;
+    color: gray;
+  }
   
   .body{
- 
+
     height: 100%;
     width: 100%;
  
@@ -97,7 +118,9 @@
     color: black;
     margin-left: 0.5em;
   }
-
+  .textboxes12{
+    display: none;
+  }
   .bottom{
     display: flex;
     flex-direction: row;
@@ -126,7 +149,7 @@
     gap: 1%;
   }
 
-  .textboxes{
+  .textboxes,.textboxes1 {
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -242,6 +265,7 @@
   flex-direction: row;
 }
 @media (max-width: 1250px) {
+  
   .bottom{
     display: flex;
     flex-direction: column;
@@ -273,7 +297,7 @@ gap: 2em;
   
   gap: 1%;
 }
-.textboxes{
+.textboxes, .textboxes1{
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -293,7 +317,9 @@ gap: 2em;
   width: 50%;
   height: 20em;
 }
-
+.SubmitButton{
+  margin-bottom: 3em;
+}
 }
 
 
@@ -319,7 +345,7 @@ gap: 2em;
     grid-template-columns: repeat(3, 1fr);
     gap: 16px;
     padding: 9px;
-    width: 40%;
+    width: 50%;
   }
   .mapContainer{
     border-radius: 10px;
@@ -340,7 +366,7 @@ gap: 2em;
     grid-template-columns: repeat(3, 1fr);
     gap: 16px;
     padding: 7px;
-    width: 50%;
+    width: 55%;
   }
   .mapContainer{
     border-radius: 10px;
@@ -368,9 +394,9 @@ gap: 2em;
     grid-template-columns: repeat(3, 1fr);
     gap: 16px;
     padding: 7px;
-    width: 65%;
+    width: 70%;
   }
-  .textboxes{
+  .textboxes, .textboxes1{
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -395,6 +421,9 @@ gap: 2em;
     width: 100%;
     transition: transform 0.2s ease, box-shadow 0.2s ease; 
   }
+  .SubmitButton{
+    margin-bottom: 2em;
+  }
 
 }
 
@@ -404,19 +433,36 @@ gap: 2em;
     grid-template-columns: repeat(3, 1fr);
     gap: 16px;
     padding: 6px;
-    width: 75%;
+    width: 94%;
   }
-  .textboxes{
+  .bottomtexts {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); /* 2 columns */
+    grid-template-rows: auto; /* Automatically adjust rows */
+    gap: 2%;
+    justify-items: center; /* Center items horizontally */
+    align-items: center; /* Center items vertically */
+  }
+  .textboxes,.textboxes1{
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     gap: 0.5em;
-    width: 40%;
+    width: 100%;
   }
+  .textboxes12{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 0.5em;
+    width: 100%;
+  }
+  
   .mapContainer{
     border-radius: 10px;
-    width: 90%;
+    width: 100%;
     height: 20em;
   }
   .tableDiv {
@@ -432,17 +478,21 @@ gap: 2em;
     transition: transform 0.2s ease, box-shadow 0.2s ease; 
   }
 
+  .DescriptionLabel,.RentalInfo{
+    display: none !important;
+  }
+
 }
 
-@media (max-width: 400px) {
+@media (max-width: 320px) {
   .container {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 16px;
     padding: 6px;
-    width: 90%;
+    width: 94%;
   }
-  .textboxes{
+  .bottomtexts {
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -450,6 +500,16 @@ gap: 2em;
     gap: 0.5em;
     width: 100%;
   }
+  .textboxes,.textboxes1{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 0.5em;
+    width: 100%;
+  }
+  
+  
   .mapContainer{
     border-radius: 10px;
     width: 100%;
@@ -468,4 +528,7 @@ gap: 2em;
     transition: transform 0.2s ease, box-shadow 0.2s ease; 
   }
 
+  
+
 }
+

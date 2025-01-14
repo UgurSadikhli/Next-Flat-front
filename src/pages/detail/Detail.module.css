@@ -69,18 +69,19 @@
     display: flex;
     flex-direction: row;
     gap: 2em;
-
     width: 100%;
+
 }
 
 .left{
-  width: 55%;
+  width:50% ;
   justify-content:start;
-
+ 
 }
 
 .mainImage{
   width: 100%;
+
 }
 
 
@@ -90,6 +91,7 @@
   align-items: start;
   width: 45%;
   gap: 6%;
+
 
 }
 
@@ -103,7 +105,7 @@
   flex-direction: row;
   text-align: center;
   gap: 4%;
-  width: 30%;
+  width: 40%;
   margin-top: -2%;
 
 }
@@ -140,11 +142,13 @@
 
 .descripText{
   text-align: start;
-  max-height: 30%;
+  max-height: 20%;
   width: 55%;
   overflow-y: auto;
   font-family: "Poppins", sans-serif;
   font-size: medium;
+
+  
 }
 
 .btnGroup{
@@ -155,39 +159,46 @@
   width: 50%;
 }
 
-.btnGroupCall{
-  border: none;
-  color: green;
-  width: 60%;
+.btnGroupCall {
+  border: 2px solid green; 
+  background-color: #4CAF50; 
+  color: white;
+  width: 50%;
+  min-width: fit-content !important;
   display: flex;
   flex-direction: row;
   justify-content: center;
   align-items: center;
   text-align: center;
   gap: 2%;
-  padding: 5px;
+  padding: 5px 5px; 
   font-family: "Poppins", sans-serif;
   font-size: medium;
-  border-radius: 10px;
-  background-color: rgba(214, 214, 214, 0.962);
+  border-radius: 10px; 
+  cursor: pointer;
+  transition: all 0.3s ease; 
 }
 
-.btnGroupBasket{
-  border: none;
-  color: blue;
-  width: 20%;
-  padding: 5px;
-  background-color: rgba(214, 214, 214, 0.962);
-  border-radius: 10px;
+.btnGroupBasket {
+  border: none; 
+  background-color: #b43131; 
+  color: white;
+  width: 25% ;
+  min-width: fit-content !important;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  gap: 2%;
+  padding: 7px 10px; 
+  font-family: "Poppins", sans-serif;
+  font-size: medium;
+  border-radius: 10px; 
+  cursor: pointer;
+  transition: all 0.3s ease; 
 }
-.btnGroupFavorite{
-  border: none;
-  color: rgb(34, 33, 33);
-  width: 20%;
-  padding: 5px;
-  border-radius: 10px;
-  background-color: rgba(214, 214, 214, 0.962);
-}
+
 
 .btnGroupCall:hover, .btnGroupBasket:hover, .btnGroupFavorite:hover {
   transform: scale(1.04);
@@ -277,6 +288,7 @@
   
   .mainImage {
     width: 100%; 
+   
   }
 
   .btnGroup {
@@ -309,17 +321,15 @@
   }
 
   .appartmentprice {
-    font-size: 1.5em;
+    font-size: 3em;
   }
 
   .appartmentpriceandvalute {
     gap: 1%; 
   }
 
-  .btnGroupCall, .btnGroupBasket, .btnGroupFavorite {
-    padding: 10px;
-    font-size: small; 
-  }
+
+
 
   .animated_image {
     max-width: 8em; 
@@ -329,6 +339,7 @@
     flex-direction: row;
     text-align: center;
     gap: 5%;
+    width: 60%;
     margin-top: -1.3em;
 
   }

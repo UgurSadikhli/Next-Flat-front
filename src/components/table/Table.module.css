@@ -1,0 +1,53 @@
+.button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid;
+    padding: 8px 12px;
+    font-size: 16px;
+    transition: all 0.3s ease;
+    cursor: pointer;
+
+  }
+  
+  .deleteButton {
+    border-color: red;
+    color: red;
+  }
+  
+  .deleteButton:hover {
+    color: darkred;
+  }
+  
+  .editButton {
+    border-color: blue;
+    color: blue;
+  }
+  
+  .editButton:hover {
+    border-color: darkblue;
+    background-color: lightblue;
+    color: darkblue;
+  }
+
+  .ButtonDiv{
+    display: flex;
+    flex-direction: row;
+    gap: 2%;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  @media screen and (max-width: 768px) {
+    .button {
+      padding: 6px 10px;
+      font-size: 14px;
+    }
+  }
+  
+  @media screen and (max-width: 480px) {
+    .button {
+      padding: 4px 8px;
+      font-size: 12px;
+    }
+  }
