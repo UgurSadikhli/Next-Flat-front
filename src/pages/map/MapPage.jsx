@@ -21,7 +21,8 @@ L.Icon.Default.mergeOptions({
 const MapPage = () => {
   const navigate = useNavigate();
   const { t } = useTranslation();
-  const [center, setCenter] = useState([40.4093, 49.8671]); //Baku location
+  const [center, setCenter] = useState([40.4093, 49.8671]); // Baku location
+  const [apartments, setApartments] = useState([]); // State to hold apartments data
 
   useEffect(() => {
     if (navigator.geolocation) {
@@ -30,7 +31,6 @@ const MapPage = () => {
           const { latitude, longitude } = position.coords;
           setCenter([latitude, longitude]);
         },
-
         (error) => {
           console.error("Error fetching geolocation:", error);
         },
@@ -39,7 +39,15 @@ const MapPage = () => {
     } else {
       alert("Geolocation is not supported by this browser.");
     }
-  }, []); //auto place opener
+
+    // Fetch apartments data from API
+    fetch("https://api.nextflat.my/apartments")
+      .then((response) => response.json())
+      .then((data) => {
+        setApartments(data); // Store the apartments in state
+      })
+      .catch((error) => console.error("Error fetching apartments:", error));
+  }, []); // Run once on component mount
 
   const handleLocateMe = () => {
     if (navigator.geolocation) {
@@ -50,20 +58,26 @@ const MapPage = () => {
     } else {
       alert("Geolocation is not supported by this browser.");
     }
-  }; //place button
+  }; // Place button
 
   const MapUpdater = ({ newCenter }) => {
     const map = useMap();
 
     useEffect(() => {
       if (newCenter) {
-        map.flyTo(newCenter, 13);
+        map.flyTo(newCenter, 16);
       }
     }, [newCenter, map]);
 
     return null;
-  }; //fly to place
+  }; // Fly to place
 
+  const navigateToApartmentDetails = (apartmentId) => {
+    navigate(`/detail/${apartmentId}`); // Navigate to apartment details page
+  };
+  const homePage =()=> {
+    navigate(`/main`); // Navigate to apartment details page
+  };
   return (
     <div className={styles.mainC}>
       <div className={styles.mainB}>
@@ -73,6 +87,7 @@ const MapPage = () => {
               src={hederImg}
               alt="Next Flat"
               className={styles.animated_image}
+              onClick={homePage}
             />
           </div>
           <hr className={styles.bottomHR} />
@@ -83,7 +98,6 @@ const MapPage = () => {
             onClick={() => navigate("/search")}
           >
             <img className={styles.backIco} alt="" src={backIco} />
-
             {t("Back")}
           </button>
           <button className={styles.mebtn} onClick={handleLocateMe}>
@@ -94,7 +108,7 @@ const MapPage = () => {
       <div className={styles.mapContainer}>
         <MapContainer
           center={center}
-          zoom={13}
+          zoom={9}
           style={{ width: "100%", height: "49em" }}
           maxBounds={[
             [85, -180],
@@ -109,6 +123,39 @@ const MapPage = () => {
           <Marker position={center}>
             <Popup>{t("You are here")}</Popup>
           </Marker>
+
+          {/* Render markers for apartments */}
+          {apartments.map((apartment, index) => {
+            if (apartment.latitude && apartment.longitude) {
+              // Use apartment image as the custom marker icon
+              const apartmentIcon = L.icon({
+                iconUrl: apartment.image || "https://via.placeholder.com/40", // Fallback if image is missing
+                iconSize: [40, 40], // Size of the icon
+                iconAnchor: [20, 40], // Position of the icon relative to the map
+                popupAnchor: [0, -40], // Adjust popup relative to the icon
+              });
+
+              return (
+                <Marker
+                  key={index}
+                  position={[apartment.latitude, apartment.longitude]}
+                  icon={apartmentIcon}
+                >
+                  <Popup>
+                    <span
+                      style={{ cursor: "pointer", color: "blue" }}
+                      onClick={() => navigateToApartmentDetails(apartment.id)} // Navigate on click
+                    >
+                      {apartment.title}
+                    </span>
+                  </Popup>
+                </Marker>
+              );
+            } else {
+              return null;
+            }
+          })}
+
           <MapUpdater newCenter={center} />
         </MapContainer>
       </div>

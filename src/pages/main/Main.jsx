@@ -13,6 +13,7 @@ import loftImg from "../../img/loft.jpg";
 import duplexImg from "../../img/duplex.jpg";
 import Card from "../../components/card/card";
 import { useNavigate } from "react-router-dom";
+import { CircularProgress, Box } from '@mui/material';
 
 const Main = () => {
   const lang = localStorage.getItem("language");
@@ -72,7 +73,7 @@ const Main = () => {
 
   let content;
   if (propertiesStatus === "loading") {
-    content = <div>Loading...</div>;
+    content = <div> <CircularProgress size={60} sx={{ color: 'goldenrod' }} /></div>;
   } else if (propertiesStatus === "successful") {
     content = Array.isArray(properties) ? (
       properties.map((property, index) => (

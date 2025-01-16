@@ -67,6 +67,7 @@
   @media (max-width: 480px) {
     .card {
       max-width: 150px;
+      height:12em;
     }
   
     .image {
@@ -74,10 +75,10 @@
     }
   
     .title {
-      font-size: 0.9em;
+      font-size: 0.98em;
     }
   
     .price {
-      font-size: 0.9em;
+      font-size: 0.93em;
     }
   }

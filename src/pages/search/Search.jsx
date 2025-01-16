@@ -34,6 +34,10 @@ const Search = () => {
   const mapNav = () => {
     navigate("/map");
   };
+  const goToFav =()=>{
+    navigate("/favorites");
+
+  }
   return (
     <>
       <div className={styles.full}>
@@ -60,7 +64,7 @@ const Search = () => {
                 />
                 {t("Home")}
               </button>
-              <button className={styles.bodyLeftTopBtn}>
+              <button className={styles.bodyLeftTopBtn} onClick={goToFav}>
                 <img
                   className={styles.bodyLeftTopBtnico}
                   alt=""

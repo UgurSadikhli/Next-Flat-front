@@ -28,13 +28,17 @@ const Heder = ({ scrollToBottom }) => {
   const loginNav = () => {
     navigate("/search");
   };
-  const detail = () => {
-    navigate("/detail/2");
+  const gotomap = () => {
+    navigate("/map");
   };
   const handleClickRent =() => {
     navigate("/search");
     localStorage.setItem("filter","rental");
   };
+
+  const gotoFav = ()=>{
+    navigate("/favorites");
+  }
   return (
     <>
       <div className={styles.main}>
@@ -43,9 +47,9 @@ const Heder = ({ scrollToBottom }) => {
           <div className={`${styles.right} ${menuOpen ? styles.showMenu : ''}`}>
             <span onClick={handleClickRent}>{t("Rent Apartment")}</span>
             <span onClick={loginNav}>{t("Search")}</span>
-            <span onClick={detail}>{t("Filter")}</span>
+            <span onClick={gotomap}>{t("Map")}</span>
             <span onClick={scrollToBottom}>{t("Apartments")}</span>
-            <span>{t("Cart")}</span>
+            <span onClick={gotoFav}>{t("Favorites")}</span>
           </div>
           <div className={styles.left}>    
             <div className={styles.dropdownIcons}>

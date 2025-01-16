@@ -13,7 +13,7 @@ import Detail from './pages/detail/Detail';
 import Register from './pages/register/RegisterPage';
 import Login from './pages/login/LoginPage';
 import AddAnnouncements from './pages/addAnnouncement/AddAnnouncement'
-
+import FavoritesPage from './pages/favorites/Favorites'
 
 
 function App() {
@@ -32,6 +32,7 @@ function App() {
             <Route path="register" element={<Register />} />
             <Route path="login" element={<Login />} />
             <Route path="newAnnouncement" element={<AddAnnouncements />} />
+            <Route path="favorites" element={<FavoritesPage />} />
           </Route>
         </Routes>
       </Router>

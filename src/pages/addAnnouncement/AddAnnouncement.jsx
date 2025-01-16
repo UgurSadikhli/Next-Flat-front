@@ -18,7 +18,7 @@ import MenuItem from '@mui/material/MenuItem';
 import Select from '@mui/material/Select';
 import AccessibleTable from "../../components/table/Table"
 import { Title } from "@mui/icons-material";
-
+import homeIco from "../../../src/icons/icons8-home-address-96.png"
 
 const AddAnnouncements = () => {
   delete L.Icon.Default.prototype._getIconUrl;
@@ -28,7 +28,12 @@ const AddAnnouncements = () => {
     iconUrl: "https://unpkg.com/leaflet@1.7.1/dist/images/marker-icon.png",
     shadowUrl: "https://unpkg.com/leaflet@1.7.1/dist/images/marker-shadow.png",
   });
-
+  const customIcon = new L.Icon({
+    iconUrl: homeIco,  // You can use any image URL for the marker icon
+    iconSize: [30, 30],                  // The size of the icon (width, height)
+    iconAnchor: [15, 30],                // Position of the icon anchor (relative to the icon size)
+    popupAnchor: [0, -30],               // Position of the popup relative to the icon
+  });
   const [currency, setCurrency] = useState('AZN');
   const [paymentMethod, setPeymentMethod] = useState('Monthly');
   const [typeOfService, setTypeOfService] = useState('Sale');
@@ -39,7 +44,7 @@ const AddAnnouncements = () => {
   const { t, i18n } = useTranslation();
   const [markerPosition, setMarkerPosition] = useState([40.4093, 49.8671]);
   const [center, setCenter] = useState([40.4093, 49.8671]);
-
+  const [userPosition, setUserPosition] = useState([51.505, -0.09]);
 
   
   useEffect(() => {
@@ -47,7 +52,9 @@ const AddAnnouncements = () => {
       navigator.geolocation.getCurrentPosition(
         (position) => {
           const { latitude, longitude } = position.coords;
-          setCenter([latitude, longitude]);
+          setCenter([latitude, longitude]); 
+          setMarkerPosition([0, 0]); 
+          setUserPosition([latitude, longitude]);
         },
         (error) => {
           console.error("Error fetching geolocation:", error);
@@ -58,6 +65,7 @@ const AddAnnouncements = () => {
       alert("Geolocation is not supported by this browser.");
     }
   }, []); 
+
 const [user, setUser] = useState(() => {
     const savedUser = localStorage.getItem("user");
     return savedUser ? JSON.parse(savedUser) : null;
@@ -86,28 +94,20 @@ const [user, setUser] = useState(() => {
   const handleChange = (event, newValue) => {
     alert(`You chose "${newValue}"`);
   };
-  const handleLocateMe = () => {
-    if (navigator.geolocation) {
-      navigator.geolocation.getCurrentPosition((position) => {
-        const { latitude, longitude } = position.coords;
-        setCenter([latitude, longitude]);
-      });
-    } else {
-      alert("Geolocation is not supported by this browser.");
-    }
-  };
+
 
   const MapUpdater = ({ newCenter }) => {
     const map = useMapEvents({
       click(event) {
         const { lat, lng } = event.latlng;
         setMarkerPosition([lat, lng]); 
+        setCenter([lat, lng]);
       },
     });
 
     useEffect(() => {
       if (newCenter) {
-        map.flyTo(newCenter, 13);
+        map.flyTo(newCenter, 16);
       }
     }, [newCenter, map]);
 
@@ -203,25 +203,41 @@ const [user, setUser] = useState(() => {
 
 
   const handleSubmit = async () => {
-    const formData = {
-      image:images[0]|| "",
-      title: document.getElementById('Title').value || "", 
-      price: document.getElementById('Price').value || 0,
-      author_id: user.id,  
-      author: user.name,
-      description: document.getElementById('Description').value ||  document.getElementById('Description1').value ,
-      longitude: markerPosition[1], 
-      latitude: markerPosition[0], 
-      images: [images[0], ...images.slice(1).filter(image => image !== null)],  
-      country: document.getElementById('Country').value || "", 
-      city: document.getElementById('City').value || "", 
-      currency:currency.toString(),
-      serviceType:typeOfService.toString(),
-      paymentMethod:paymentMethod.toString(),
-      roomNumber:roomNumber.toString(),
-      kvmAmount:document.getElementById('Kv_M').value || "",
-      typeOfHome:typeOfHome.toString(),
-    };
+    
+  const title = document.getElementById('Title').value;
+  const price = document.getElementById('Price').value;
+  const country = document.getElementById('Country').value;
+  const city = document.getElementById('City').value;
+  const description = document.getElementById('Description').value || document.getElementById('Description1').value;
+  const kv_m = document.getElementById('Kv_M').value;
+  const street = document.getElementById('Street').value;
+  const flour = document.getElementById('Flour').value;
+  if (!title || !flour || !price || !country || !city || !description || !kv_m || !images[0] || !street || markerPosition[1]===0 || markerPosition[0] === 0) {
+    alert(t("all_fields_required"));
+    return;
+  }
+
+  const formData = {
+    image: images[0] || "", 
+    title,
+    price,
+    author_id: user.id,
+    author: user.name,
+    description,
+    longitude: markerPosition[1],
+    latitude: markerPosition[0],
+    images: [images[0], ...images.slice(1).filter(image => image !== null)],
+    country,
+    city,
+    currency: currency.toString(),
+    serviceType: typeOfService.toString(),
+    paymentMethod: paymentMethod.toString(),
+    roomNumber: roomNumber.toString(),
+    kvmAmount: kv_m,
+    typeOfHome: typeOfHome.toString(),
+    street,
+    flour
+  };
 
     try {
       const response = await fetch("https://api.nextflat.my/apartments", {
@@ -588,7 +604,7 @@ const [user, setUser] = useState(() => {
           <div className={styles.mapContainer}>
             <MapContainer
               center={center}
-              zoom={13}
+              zoom={4}
               style={{ width: "100%", height: "100%" }}
               maxBounds={[
                 [85, -180],
@@ -600,8 +616,11 @@ const [user, setUser] = useState(() => {
                 url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
                 attribution="&copy; Uğur Sadıxlı"
               />
-              <Marker position={markerPosition}>
-                <Popup>{t("You are here")}</Popup>
+              <Marker position={markerPosition} icon={customIcon}>
+                <Popup>{t("Home")}</Popup>
+              </Marker>
+              <Marker position={userPosition}>
+              <Popup>{t("You are here")}</Popup>
               </Marker>
               <MapUpdater newCenter={center} />
             </MapContainer>
@@ -609,7 +628,7 @@ const [user, setUser] = useState(() => {
           </div>
         </div>
       </div>
-      <button className={styles.SubmitButton} onClick={handleSubmit}>Submit</button>
+      <button className={styles.SubmitButton} onClick={handleSubmit}>{t("Submit")}</button>
     </div>
   );
 };

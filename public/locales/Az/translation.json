@@ -81,5 +81,16 @@
   "Payment method": "Ödəniş üsulu",
   "Actions":"Əməliyyat",
   "Delete":"Sil",
-  "Edit":"Redaktə et"
+  "Edit":"Redaktə et",
+  "Submit":"Yarat",
+  "all_fields_required": "Bütün sahələr doldurulmalıdır və şəkil yüklənməlidir. Evin dəqiq yerini xəritədə seçmək lazımdır.",
+   "no_favorites": "Seçilmiş elanlarınız yoxdur, aşağıya klikləyərək seçin",
+    "not_logged_in": "Görünür hələ sistemə daxil olmamısınız, favoritlərinizi idarə etmək üçün daxil olun",
+    "Service Type": "Xidmət Növü",
+    "Type of Home": "Evin Növü",
+    "Payment Options": "Ödəniş Seçimləri",
+    "Area (kvm)": "Sahə (kv.m)",
+    "Floor": "Mərtəbə",
+  "studio": "Studiya"
+
 }

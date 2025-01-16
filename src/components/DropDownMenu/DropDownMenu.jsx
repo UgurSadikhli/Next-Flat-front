@@ -39,9 +39,10 @@ export default function BasicMenu({scrollToBottomm}) {
         navigate("/search");
     } else if(option === "filter") { 
         navigate("/detail/2");
-    } else if(option === "cart") { 
+    } else if(option === "favorites") { 
         navigate("/detail/2");
-    }
+        navigate("/favorites")
+    } 
 
     setAnchorEl(null);
   };
@@ -84,7 +85,7 @@ export default function BasicMenu({scrollToBottomm}) {
         <MenuItem onClick={() => handleClose("search")}>{t("Search")}</MenuItem>
         <MenuItem onClick={() => handleClose("filter")}>{t("Filter")}</MenuItem>
         <MenuItem onClick={() => {handleClose("apartment"); scrollToBottomm();}}>{t("Apartments")}</MenuItem>
-        <MenuItem onClick={() => handleClose("cart")}>{t("Cart")}</MenuItem>
+        <MenuItem onClick={() => handleClose("favorites")}>{t("Favorites")}</MenuItem>
       </Menu>
     </div>
   );

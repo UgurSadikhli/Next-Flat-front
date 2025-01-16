@@ -79,5 +79,15 @@
   "Payment method": "Payment method",
   "Actions":"Actions",
   "Delete":"Delete",
-  "Edit":"Edit"
+  "Edit":"Edit",
+  "Submit":"Submit",
+  "all_fields_required": "All fields are required and an image should be uploaded. The exact place of the home should be selected on the map.",
+   "no_favorites": "You don't have any favorite announcements, choose them by clicking below",
+    "not_logged_in": "It looks like you have not logged in yet, please login to manage favorites",
+    "Service Type": "Service Type",
+    "Type of Home": "Type of Home",
+    "Payment Options": "Payment Options",
+    "Area (kvm)": "Area (kvm)",
+    "Floor": "Floor",
+    "studio":"Studio"
 }
