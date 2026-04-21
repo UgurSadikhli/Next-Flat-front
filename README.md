@@ -28,3 +28,10 @@ Your app is ready to be deployed!
 
 See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
 
+### `Images`
+____________________
+<img width="1680" height="849" alt="Снимок экрана 2026-04-21 в 23 45 25" src="https://github.com/user-attachments/assets/496289b8-f81e-447e-819b-b6ebd0935d0e" />
+
+<img width="1674" height="846" alt="Снимок экрана 2026-04-21 в 23 45 17" src="https://github.com/user-attachments/assets/6db0b30b-151d-451c-b761-de85e271849f" />
+
+<img width="1694" height="822" alt="Снимок экрана 2026-04-21 в 23 45 44" src="https://github.com/user-attachments/assets/d973fd00-979b-44dd-a242-1711d6e9412a" />
