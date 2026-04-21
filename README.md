@@ -26,12 +26,10 @@ It correctly bundles React in production mode and optimizes the build for the be
 The build is minified and the filenames include the hashes.\
 Your app is ready to be deployed!
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
 
 <br/>
 
-### `Images`
-____________________
+## `Images`
 
 <img width="1680" height="849" alt="Снимок экрана 2026-04-21 в 23 45 25" src="https://github.com/user-attachments/assets/496289b8-f81e-447e-819b-b6ebd0935d0e" />
 <br/>
